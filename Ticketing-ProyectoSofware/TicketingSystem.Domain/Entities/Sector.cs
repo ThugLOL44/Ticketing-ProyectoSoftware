@@ -1,0 +1,13 @@
+namespace TicketingSystem.Domain.Entities;
+
+public class Sector
+{
+    public Guid Id { get; set; }
+    public Guid EventId { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public decimal Price { get; set; }
+    public int Capacity { get; set; }
+
+    public Event Event { get; set; } = null!;
+    public ICollection<Seat> Seats { get; set; } = new List<Seat>();
+}
