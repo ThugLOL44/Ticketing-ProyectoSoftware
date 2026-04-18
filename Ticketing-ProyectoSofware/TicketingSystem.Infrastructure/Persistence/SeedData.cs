@@ -5,8 +5,8 @@ namespace TicketingSystem.Infrastructure.Persistence
 {
     public static class SeedData
     {
-        public static void Initialize(AppDbContext context)
-        {
+            public static void Initialize(AppDbContext context)
+            {
             if (context.Events.Any()) return;
 
             var eventoId = Guid.NewGuid();
