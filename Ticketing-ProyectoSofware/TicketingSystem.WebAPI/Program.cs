@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using TicketingSystem.Application.Interfaces;
+using TicketingSystem.Application.Services;
 using TicketingSystem.Infrastructure.Persistence;
+using TicketingSystem.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +16,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         b => b.MigrationsAssembly("TicketingSystem.Infrastructure")
     )
 );
+
+builder.Services.AddScoped<IEventRepository, EventRepository>();
+builder.Services.AddScoped<IEventService, EventService>();
 
 var app = builder.Build();
 
