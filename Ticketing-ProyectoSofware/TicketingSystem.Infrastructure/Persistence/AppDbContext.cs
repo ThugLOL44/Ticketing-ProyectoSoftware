@@ -69,9 +69,10 @@ namespace TicketingSystem.Infrastructure.Persistence
             {
                 string fila = ((char)('A' + (numero - 1) / 10)).ToString();
 
+                // GUIDs deterministas — siempre el mismo valor para cada butaca
                 seats.Add(new Seat
                 {
-                    Id = Guid.NewGuid(),
+                    Id = new Guid($"aa000000-0000-0000-0000-{numero:D12}"),
                     SectorId = sectorGeneralId,
                     RowIdentifier = fila,
                     SeatNumber = numero,
@@ -81,7 +82,7 @@ namespace TicketingSystem.Infrastructure.Persistence
 
                 seats.Add(new Seat
                 {
-                    Id = Guid.NewGuid(),
+                    Id = new Guid($"bb000000-0000-0000-0000-{numero:D12}"),
                     SectorId = sectorVipId,
                     RowIdentifier = fila,
                     SeatNumber = numero,
