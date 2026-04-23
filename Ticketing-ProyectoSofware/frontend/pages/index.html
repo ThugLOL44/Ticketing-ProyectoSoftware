@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrandLine Tickets - Catálogos de Eventos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <img src="../assets/logo.jpg" alt="Logotipo">
+            <span class="navbar-brand">GrandLine Tickets</span>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Tu entrada al espectáculo</h1>
+            <p class="hero-subtitle">Los mejores eventos en un solo lugar. Elegí tu lugar y reservá tu entrada.</p>
+            <a href="#catalogo" class="btn-primary">Ver eventos</a>
+        </div>
+    </section>
+    
+    <section class="event-catalog" id="catalogo">
+        <div class="catalog-container">
+            <h1 class="catalog-title">Eventos Disponibles</h1>
+            <!-- Spinner -->
+            <div id="spinner" class="hidden">
+                <div class="spinner-circle"></div>
+                <p>Cargando eventos...</p>
+            </div>
+    
+            <!-- Error -->
+            <div id="error-message" class="hidden">
+                Hubo un error al cargar los eventos. Intentá más tarde.
+            </div>
+    
+            <!-- Grilla -->
+            <div id="events-container" class="hidden"></div>
+    
+            <!-- Paginación -->
+            <div id="pagination-container" class="hidden"></div>
+    
+        </div>
+    </section>
+
+
+    
+    <script src="../services/api.js"></script>
+    <script src="../components/cardEvent.js"></script>
+    <script src="../pages/catalog.js"></script>
+</body>
+</html>
