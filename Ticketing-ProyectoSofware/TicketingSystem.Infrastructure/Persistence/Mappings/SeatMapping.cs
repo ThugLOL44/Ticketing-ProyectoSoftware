@@ -4,9 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace TicketingSystem.Infrastructure.Persistence.Mappings
-{   /// </summary>
-    /// Version actúa como token de concurrencia para Optimistic Locking (Entrega 2).
-    /// </summary>
+{
     public class SeatMapping : IEntityTypeConfiguration<Seat>
     {
         public void Configure(EntityTypeBuilder<Seat> builder)
@@ -25,9 +23,9 @@ namespace TicketingSystem.Infrastructure.Persistence.Mappings
             builder.Property(s => s.Status)
                 .IsRequired()
                 .HasConversion<string>()
+                .HasMaxLength(20)
                 .HasDefaultValue(SeatStatus.Available);
 
-            // Token de concurrencia para Optimistic Locking
             builder.Property(s => s.Version)
                 .IsConcurrencyToken();
 

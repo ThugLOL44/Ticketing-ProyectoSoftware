@@ -4,7 +4,7 @@ using TicketingSystem.Application.Interfaces;
 
 namespace TicketingSystem.WebAPI.Controllers
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/v1/events")]
     [ApiController]
     public class EventController : ControllerBase
     {
