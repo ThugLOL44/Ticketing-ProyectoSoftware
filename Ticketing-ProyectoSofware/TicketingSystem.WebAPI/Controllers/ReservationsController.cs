@@ -22,7 +22,18 @@ namespace TicketingSystem.WebAPI.Controllers
             try
             {
                 var reservation = await _createReservation.ExecuteAsync(request.SeatId, request.UserId);
-                return CreatedAtAction(nameof(CreateReservation), new { id = reservation.Id }, reservation);
+
+                var dto = new ReservationDto
+                {
+                    Id = reservation.Id,
+                    SeatId = reservation.SeatId,
+                    UserId = reservation.UserId,
+                    Status = reservation.Status,
+                    ReservedAt = reservation.ReservedAt,
+                    ExpiresAt = reservation.ExpiresAt
+                };
+
+                return Created(string.Empty, dto);
             }
             catch (InvalidOperationException ex)
             {
