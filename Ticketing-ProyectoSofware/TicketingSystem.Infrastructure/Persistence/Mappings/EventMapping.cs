@@ -29,6 +29,9 @@ namespace TicketingSystem.Infrastructure.Persistence.Mappings
                 .HasMaxLength(20)
                 .HasDefaultValue("Active");
 
+            builder.Property(e => e.ImageUrl)
+                .HasMaxLength(500);
+
             builder.HasMany(e => e.Sectors)
                 .WithOne(s => s.Event)
                 .HasForeignKey(s => s.EventId)
