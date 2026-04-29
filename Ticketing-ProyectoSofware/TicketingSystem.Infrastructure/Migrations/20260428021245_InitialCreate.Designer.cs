@@ -12,7 +12,7 @@ using TicketingSystem.Infrastructure.Persistence;
 namespace TicketingSystem.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260421015422_InitialCreate")]
+    [Migration("20260428021245_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -173,28 +173,10 @@ namespace TicketingSystem.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000001"),
-                            RowIdentifier = "A",
-                            SeatNumber = 1,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
                             Id = new Guid("bb000000-0000-0000-0000-000000000001"),
                             RowIdentifier = "A",
                             SeatNumber = 1,
                             SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000002"),
-                            RowIdentifier = "A",
-                            SeatNumber = 2,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Status = "Available",
                             Version = 0
                         },
@@ -209,28 +191,10 @@ namespace TicketingSystem.Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000003"),
-                            RowIdentifier = "A",
-                            SeatNumber = 3,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
                             Id = new Guid("bb000000-0000-0000-0000-000000000003"),
                             RowIdentifier = "A",
                             SeatNumber = 3,
                             SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000004"),
-                            RowIdentifier = "A",
-                            SeatNumber = 4,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Status = "Available",
                             Version = 0
                         },
@@ -245,28 +209,10 @@ namespace TicketingSystem.Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000005"),
-                            RowIdentifier = "A",
-                            SeatNumber = 5,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
                             Id = new Guid("bb000000-0000-0000-0000-000000000005"),
                             RowIdentifier = "A",
                             SeatNumber = 5,
                             SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000006"),
-                            RowIdentifier = "A",
-                            SeatNumber = 6,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Status = "Available",
                             Version = 0
                         },
@@ -281,82 +227,37 @@ namespace TicketingSystem.Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000007"),
-                            RowIdentifier = "A",
-                            SeatNumber = 7,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
                             Id = new Guid("bb000000-0000-0000-0000-000000000007"),
-                            RowIdentifier = "A",
-                            SeatNumber = 7,
+                            RowIdentifier = "B",
+                            SeatNumber = 1,
                             SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000008"),
-                            RowIdentifier = "A",
-                            SeatNumber = 8,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("bb000000-0000-0000-0000-000000000008"),
-                            RowIdentifier = "A",
-                            SeatNumber = 8,
+                            RowIdentifier = "B",
+                            SeatNumber = 2,
                             SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000009"),
-                            RowIdentifier = "A",
-                            SeatNumber = 9,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("bb000000-0000-0000-0000-000000000009"),
-                            RowIdentifier = "A",
-                            SeatNumber = 9,
+                            RowIdentifier = "B",
+                            SeatNumber = 3,
                             SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000010"),
-                            RowIdentifier = "A",
-                            SeatNumber = 10,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("bb000000-0000-0000-0000-000000000010"),
-                            RowIdentifier = "A",
-                            SeatNumber = 10,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000011"),
                             RowIdentifier = "B",
-                            SeatNumber = 11,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            SeatNumber = 4,
+                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
@@ -364,17 +265,8 @@ namespace TicketingSystem.Infrastructure.Migrations
                         {
                             Id = new Guid("bb000000-0000-0000-0000-000000000011"),
                             RowIdentifier = "B",
-                            SeatNumber = 11,
+                            SeatNumber = 5,
                             SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000012"),
-                            RowIdentifier = "B",
-                            SeatNumber = 12,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Status = "Available",
                             Version = 0
                         },
@@ -382,17 +274,8 @@ namespace TicketingSystem.Infrastructure.Migrations
                         {
                             Id = new Guid("bb000000-0000-0000-0000-000000000012"),
                             RowIdentifier = "B",
-                            SeatNumber = 12,
+                            SeatNumber = 6,
                             SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000013"),
-                            RowIdentifier = "B",
-                            SeatNumber = 13,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Status = "Available",
                             Version = 0
                         },
@@ -400,17 +283,8 @@ namespace TicketingSystem.Infrastructure.Migrations
                         {
                             Id = new Guid("bb000000-0000-0000-0000-000000000013"),
                             RowIdentifier = "B",
-                            SeatNumber = 13,
+                            SeatNumber = 7,
                             SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000014"),
-                            RowIdentifier = "B",
-                            SeatNumber = 14,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Status = "Available",
                             Version = 0
                         },
@@ -418,125 +292,62 @@ namespace TicketingSystem.Infrastructure.Migrations
                         {
                             Id = new Guid("bb000000-0000-0000-0000-000000000014"),
                             RowIdentifier = "B",
-                            SeatNumber = 14,
+                            SeatNumber = 8,
                             SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000015"),
-                            RowIdentifier = "B",
-                            SeatNumber = 15,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("bb000000-0000-0000-0000-000000000015"),
-                            RowIdentifier = "B",
-                            SeatNumber = 15,
+                            RowIdentifier = "C",
+                            SeatNumber = 1,
                             SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000016"),
-                            RowIdentifier = "B",
-                            SeatNumber = 16,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("bb000000-0000-0000-0000-000000000016"),
-                            RowIdentifier = "B",
-                            SeatNumber = 16,
+                            RowIdentifier = "C",
+                            SeatNumber = 2,
                             SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000017"),
-                            RowIdentifier = "B",
-                            SeatNumber = 17,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("bb000000-0000-0000-0000-000000000017"),
-                            RowIdentifier = "B",
-                            SeatNumber = 17,
+                            RowIdentifier = "C",
+                            SeatNumber = 3,
                             SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000018"),
-                            RowIdentifier = "B",
-                            SeatNumber = 18,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("bb000000-0000-0000-0000-000000000018"),
-                            RowIdentifier = "B",
-                            SeatNumber = 18,
+                            RowIdentifier = "C",
+                            SeatNumber = 4,
                             SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000019"),
-                            RowIdentifier = "B",
-                            SeatNumber = 19,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("bb000000-0000-0000-0000-000000000019"),
-                            RowIdentifier = "B",
-                            SeatNumber = 19,
+                            RowIdentifier = "C",
+                            SeatNumber = 5,
                             SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000020"),
-                            RowIdentifier = "B",
-                            SeatNumber = 20,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("bb000000-0000-0000-0000-000000000020"),
-                            RowIdentifier = "B",
-                            SeatNumber = 20,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000021"),
                             RowIdentifier = "C",
-                            SeatNumber = 21,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            SeatNumber = 6,
+                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
@@ -544,17 +355,8 @@ namespace TicketingSystem.Infrastructure.Migrations
                         {
                             Id = new Guid("bb000000-0000-0000-0000-000000000021"),
                             RowIdentifier = "C",
-                            SeatNumber = 21,
+                            SeatNumber = 7,
                             SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000022"),
-                            RowIdentifier = "C",
-                            SeatNumber = 22,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Status = "Available",
                             Version = 0
                         },
@@ -562,17 +364,8 @@ namespace TicketingSystem.Infrastructure.Migrations
                         {
                             Id = new Guid("bb000000-0000-0000-0000-000000000022"),
                             RowIdentifier = "C",
-                            SeatNumber = 22,
+                            SeatNumber = 8,
                             SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000023"),
-                            RowIdentifier = "C",
-                            SeatNumber = 23,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Status = "Available",
                             Version = 0
                         },
@@ -580,17 +373,8 @@ namespace TicketingSystem.Infrastructure.Migrations
                         {
                             Id = new Guid("bb000000-0000-0000-0000-000000000023"),
                             RowIdentifier = "C",
-                            SeatNumber = 23,
+                            SeatNumber = 9,
                             SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("aa000000-0000-0000-0000-000000000024"),
-                            RowIdentifier = "C",
-                            SeatNumber = 24,
-                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Status = "Available",
                             Version = 0
                         },
@@ -598,476 +382,548 @@ namespace TicketingSystem.Infrastructure.Migrations
                         {
                             Id = new Guid("bb000000-0000-0000-0000-000000000024"),
                             RowIdentifier = "C",
-                            SeatNumber = 24,
+                            SeatNumber = 10,
                             SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000001"),
+                            RowIdentifier = "D",
+                            SeatNumber = 1,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000002"),
+                            RowIdentifier = "D",
+                            SeatNumber = 2,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000003"),
+                            RowIdentifier = "D",
+                            SeatNumber = 3,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000004"),
+                            RowIdentifier = "D",
+                            SeatNumber = 4,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000005"),
+                            RowIdentifier = "D",
+                            SeatNumber = 5,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000006"),
+                            RowIdentifier = "D",
+                            SeatNumber = 6,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000007"),
+                            RowIdentifier = "D",
+                            SeatNumber = 7,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000008"),
+                            RowIdentifier = "D",
+                            SeatNumber = 8,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000009"),
+                            RowIdentifier = "E",
+                            SeatNumber = 1,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000010"),
+                            RowIdentifier = "E",
+                            SeatNumber = 2,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000011"),
+                            RowIdentifier = "E",
+                            SeatNumber = 3,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000012"),
+                            RowIdentifier = "E",
+                            SeatNumber = 4,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000013"),
+                            RowIdentifier = "E",
+                            SeatNumber = 5,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000014"),
+                            RowIdentifier = "E",
+                            SeatNumber = 6,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000015"),
+                            RowIdentifier = "E",
+                            SeatNumber = 7,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000016"),
+                            RowIdentifier = "E",
+                            SeatNumber = 8,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000017"),
+                            RowIdentifier = "E",
+                            SeatNumber = 9,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000018"),
+                            RowIdentifier = "E",
+                            SeatNumber = 10,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000019"),
+                            RowIdentifier = "F",
+                            SeatNumber = 1,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000020"),
+                            RowIdentifier = "F",
+                            SeatNumber = 2,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000021"),
+                            RowIdentifier = "F",
+                            SeatNumber = 3,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000022"),
+                            RowIdentifier = "F",
+                            SeatNumber = 4,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000023"),
+                            RowIdentifier = "F",
+                            SeatNumber = 5,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000024"),
+                            RowIdentifier = "F",
+                            SeatNumber = 6,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000025"),
-                            RowIdentifier = "C",
-                            SeatNumber = 25,
+                            RowIdentifier = "F",
+                            SeatNumber = 7,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000025"),
-                            RowIdentifier = "C",
-                            SeatNumber = 25,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000026"),
-                            RowIdentifier = "C",
-                            SeatNumber = 26,
+                            RowIdentifier = "F",
+                            SeatNumber = 8,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000026"),
-                            RowIdentifier = "C",
-                            SeatNumber = 26,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000027"),
-                            RowIdentifier = "C",
-                            SeatNumber = 27,
+                            RowIdentifier = "F",
+                            SeatNumber = 9,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000027"),
-                            RowIdentifier = "C",
-                            SeatNumber = 27,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000028"),
-                            RowIdentifier = "C",
-                            SeatNumber = 28,
+                            RowIdentifier = "F",
+                            SeatNumber = 10,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000028"),
-                            RowIdentifier = "C",
-                            SeatNumber = 28,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000029"),
-                            RowIdentifier = "C",
-                            SeatNumber = 29,
+                            RowIdentifier = "F",
+                            SeatNumber = 11,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000029"),
-                            RowIdentifier = "C",
-                            SeatNumber = 29,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000030"),
-                            RowIdentifier = "C",
-                            SeatNumber = 30,
+                            RowIdentifier = "F",
+                            SeatNumber = 12,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000030"),
-                            RowIdentifier = "C",
-                            SeatNumber = 30,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000031"),
-                            RowIdentifier = "D",
-                            SeatNumber = 31,
+                            RowIdentifier = "G",
+                            SeatNumber = 1,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000031"),
-                            RowIdentifier = "D",
-                            SeatNumber = 31,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000032"),
-                            RowIdentifier = "D",
-                            SeatNumber = 32,
+                            RowIdentifier = "G",
+                            SeatNumber = 2,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000032"),
-                            RowIdentifier = "D",
-                            SeatNumber = 32,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000033"),
-                            RowIdentifier = "D",
-                            SeatNumber = 33,
+                            RowIdentifier = "G",
+                            SeatNumber = 3,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000033"),
-                            RowIdentifier = "D",
-                            SeatNumber = 33,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000034"),
-                            RowIdentifier = "D",
-                            SeatNumber = 34,
+                            RowIdentifier = "G",
+                            SeatNumber = 4,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000034"),
-                            RowIdentifier = "D",
-                            SeatNumber = 34,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000035"),
-                            RowIdentifier = "D",
-                            SeatNumber = 35,
+                            RowIdentifier = "G",
+                            SeatNumber = 5,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000035"),
-                            RowIdentifier = "D",
-                            SeatNumber = 35,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000036"),
-                            RowIdentifier = "D",
-                            SeatNumber = 36,
+                            RowIdentifier = "G",
+                            SeatNumber = 6,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000036"),
-                            RowIdentifier = "D",
-                            SeatNumber = 36,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000037"),
-                            RowIdentifier = "D",
-                            SeatNumber = 37,
+                            RowIdentifier = "G",
+                            SeatNumber = 7,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000037"),
-                            RowIdentifier = "D",
-                            SeatNumber = 37,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000038"),
-                            RowIdentifier = "D",
-                            SeatNumber = 38,
+                            RowIdentifier = "G",
+                            SeatNumber = 8,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000038"),
-                            RowIdentifier = "D",
-                            SeatNumber = 38,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000039"),
-                            RowIdentifier = "D",
-                            SeatNumber = 39,
+                            RowIdentifier = "G",
+                            SeatNumber = 9,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000039"),
-                            RowIdentifier = "D",
-                            SeatNumber = 39,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000040"),
-                            RowIdentifier = "D",
-                            SeatNumber = 40,
+                            RowIdentifier = "G",
+                            SeatNumber = 10,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000040"),
-                            RowIdentifier = "D",
-                            SeatNumber = 40,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000041"),
-                            RowIdentifier = "E",
-                            SeatNumber = 41,
+                            RowIdentifier = "G",
+                            SeatNumber = 11,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000041"),
-                            RowIdentifier = "E",
-                            SeatNumber = 41,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000042"),
-                            RowIdentifier = "E",
-                            SeatNumber = 42,
+                            RowIdentifier = "G",
+                            SeatNumber = 12,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000042"),
-                            RowIdentifier = "E",
-                            SeatNumber = 42,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000043"),
-                            RowIdentifier = "E",
-                            SeatNumber = 43,
+                            RowIdentifier = "G",
+                            SeatNumber = 13,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000043"),
-                            RowIdentifier = "E",
-                            SeatNumber = 43,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000044"),
-                            RowIdentifier = "E",
-                            SeatNumber = 44,
+                            RowIdentifier = "G",
+                            SeatNumber = 14,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000044"),
-                            RowIdentifier = "E",
-                            SeatNumber = 44,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000045"),
-                            RowIdentifier = "E",
-                            SeatNumber = 45,
+                            RowIdentifier = "H",
+                            SeatNumber = 1,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000045"),
-                            RowIdentifier = "E",
-                            SeatNumber = 45,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000046"),
-                            RowIdentifier = "E",
-                            SeatNumber = 46,
+                            RowIdentifier = "H",
+                            SeatNumber = 2,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000046"),
-                            RowIdentifier = "E",
-                            SeatNumber = 46,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000047"),
-                            RowIdentifier = "E",
-                            SeatNumber = 47,
+                            RowIdentifier = "H",
+                            SeatNumber = 3,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000047"),
-                            RowIdentifier = "E",
-                            SeatNumber = 47,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000048"),
-                            RowIdentifier = "E",
-                            SeatNumber = 48,
+                            RowIdentifier = "H",
+                            SeatNumber = 4,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000048"),
-                            RowIdentifier = "E",
-                            SeatNumber = 48,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000049"),
-                            RowIdentifier = "E",
-                            SeatNumber = 49,
+                            RowIdentifier = "H",
+                            SeatNumber = 5,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Status = "Available",
-                            Version = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000049"),
-                            RowIdentifier = "E",
-                            SeatNumber = 49,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
                             Id = new Guid("aa000000-0000-0000-0000-000000000050"),
-                            RowIdentifier = "E",
-                            SeatNumber = 50,
+                            RowIdentifier = "H",
+                            SeatNumber = 6,
                             SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Status = "Available",
                             Version = 0
                         },
                         new
                         {
-                            Id = new Guid("bb000000-0000-0000-0000-000000000050"),
-                            RowIdentifier = "E",
-                            SeatNumber = 50,
-                            SectorId = new Guid("33333333-3333-3333-3333-333333333333"),
+                            Id = new Guid("aa000000-0000-0000-0000-000000000051"),
+                            RowIdentifier = "H",
+                            SeatNumber = 7,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000052"),
+                            RowIdentifier = "H",
+                            SeatNumber = 8,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000053"),
+                            RowIdentifier = "H",
+                            SeatNumber = 9,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000054"),
+                            RowIdentifier = "H",
+                            SeatNumber = 10,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000055"),
+                            RowIdentifier = "H",
+                            SeatNumber = 11,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000056"),
+                            RowIdentifier = "H",
+                            SeatNumber = 12,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000057"),
+                            RowIdentifier = "H",
+                            SeatNumber = 13,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000058"),
+                            RowIdentifier = "H",
+                            SeatNumber = 14,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000059"),
+                            RowIdentifier = "H",
+                            SeatNumber = 15,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Status = "Available",
+                            Version = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("aa000000-0000-0000-0000-000000000060"),
+                            RowIdentifier = "H",
+                            SeatNumber = 16,
+                            SectorId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Status = "Available",
                             Version = 0
                         });
@@ -1103,18 +959,18 @@ namespace TicketingSystem.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Capacity = 50,
+                            Capacity = 60,
                             EventId = new Guid("11111111-1111-1111-1111-111111111111"),
                             Name = "General",
-                            Price = 5000m
+                            Price = 80000m
                         },
                         new
                         {
                             Id = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Capacity = 50,
+                            Capacity = 24,
                             EventId = new Guid("11111111-1111-1111-1111-111111111111"),
                             Name = "VIP",
-                            Price = 15000m
+                            Price = 110000m
                         });
                 });
 
