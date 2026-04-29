@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace TicketingSystem.Infrastructure.Persistence.Mappings
-{  
+{
     public class SeatMapping : IEntityTypeConfiguration<Seat>
     {
         public void Configure(EntityTypeBuilder<Seat> builder)

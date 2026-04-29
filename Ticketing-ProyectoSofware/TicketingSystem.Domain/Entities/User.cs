@@ -1,5 +1,8 @@
 ﻿namespace TicketingSystem.Domain.Entities;
 
+/// <summary>
+/// Representa un usuario del sistema que puede realizar reservas.
+/// </summary>
 public class User
 {
     public Guid Id { get; set; }
