@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://localhost:7002';
+const API_BASE_URL = 'http://localhost:5158';
 
 
 async function getSeats(eventId) {
