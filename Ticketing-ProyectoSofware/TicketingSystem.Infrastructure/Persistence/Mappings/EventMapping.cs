@@ -33,8 +33,6 @@ namespace TicketingSystem.Infrastructure.Persistence.Mappings
                 .WithOne(s => s.Event)
                 .HasForeignKey(s => s.EventId)
                 .OnDelete(DeleteBehavior.Cascade);
-
-
         }
     }
 }
