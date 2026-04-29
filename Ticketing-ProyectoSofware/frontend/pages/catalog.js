@@ -35,6 +35,12 @@ function renderPagination(totalPages, currentPage) {
     }
 }
 
+//Redireccion a mapa de asientos
+
+function goToSeatMap(eventId){
+     window.location.href = `seat-map.html?eventId=${eventId}`;
+}
+
 // Función principal
 async function loadEvents(page) {
     showElement(spinner);
