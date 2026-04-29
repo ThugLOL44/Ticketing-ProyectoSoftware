@@ -11,5 +11,7 @@ namespace TicketingSystem.Application.DTOs
         public string Venue { get; set; } = string.Empty;
         public DateTimeOffset EventDate { get; set; }
         public string status { get; set; } = string.Empty;
+
+        public string? ImageUrl { get; set; }
     }
 }
