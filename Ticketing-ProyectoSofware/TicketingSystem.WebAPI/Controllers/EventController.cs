@@ -18,8 +18,15 @@ namespace TicketingSystem.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetPagedEvents(int page = 1, int pageSize = 10)
         {
-            var (events, totalCount) = await _eventService.GetPagedEventsAsync(page, pageSize);
-            return Ok(new { Events = events, TotalCount = totalCount, Page = page, PageSize = pageSize, TotalPages = (int)Math.Ceiling((double)totalCount / pageSize)});
+            try
+            {
+                var (events, totalCount) = await _eventService.GetPagedEventsAsync(page, pageSize);
+                return Ok(new { Events = events, TotalCount = totalCount, Page = page, PageSize = pageSize, TotalPages = (int)Math.Ceiling((double)totalCount / pageSize) });
+            }catch (Exception ex)
+            {
+                return Problem("Error al obtener los eventos");
+            }
+            
         }
     }
 }
