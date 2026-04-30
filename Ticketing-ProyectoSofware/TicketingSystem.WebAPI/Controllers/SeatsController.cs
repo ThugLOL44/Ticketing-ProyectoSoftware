@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TicketingSystem.Application.UseCases;
-using TicketingSystem.WebAPI.DTOs;
+using TicketingSystem.Application.DTOs;
 
 namespace TicketingSystem.WebAPI.Controllers
 {
