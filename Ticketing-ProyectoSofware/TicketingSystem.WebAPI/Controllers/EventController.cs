@@ -1,5 +1,4 @@
-﻿using Azure;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using TicketingSystem.Application.Interfaces;
 
 namespace TicketingSystem.WebAPI.Controllers
@@ -19,10 +18,10 @@ namespace TicketingSystem.WebAPI.Controllers
         public async Task<IActionResult> GetPagedEvents(int page = 1, int pageSize = 10)
         {
             try
-            {
+            {s
                 var (events, totalCount) = await _eventService.GetPagedEventsAsync(page, pageSize);
                 return Ok(new { Events = events, TotalCount = totalCount, Page = page, PageSize = pageSize, TotalPages = (int)Math.Ceiling((double)totalCount / pageSize) });
-            }catch (Exception ex)
+            }catch (Exception)
             {
                 return Problem("Error al obtener los eventos");
             }
