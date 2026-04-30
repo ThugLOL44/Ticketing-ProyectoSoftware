@@ -7,6 +7,5 @@ public class EventDto
         public DateTimeOffset EventDate { get; set; }
         public string status { get; set; } = string.Empty;
         public string? ImageUrl { get; set; }
-    }
 }
 
