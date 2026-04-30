@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TicketingSystem.Application.UseCases;
-using TicketingSystem.WebAPI.DTOs;
+using TicketingSystem.Application.DTOs;
+using TicketingSystem.Application.Interfaces;
 
 namespace TicketingSystem.WebAPI.Controllers
 {
@@ -8,17 +8,17 @@ namespace TicketingSystem.WebAPI.Controllers
     [Route("api/v1/events/{eventId}/seats")]
     public class SeatsController : ControllerBase
     {
-        private readonly GetSeatsByEventUseCase _getSeatsByEvent;
+        private readonly ISeatService _seatService;
 
-        public SeatsController(GetSeatsByEventUseCase getSeatsByEvent)
+        public SeatsController(ISeatService seatService)
         {
-            _getSeatsByEvent = getSeatsByEvent;
+            _seatService = seatService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetSeats(Guid eventId)
         {
-            var seats = await _getSeatsByEvent.ExecuteAsync(eventId);
+            var seats = await _seatService.GetByEventIdAsync(eventId);
 
             var result = seats.Select(s => new SeatDto
             {

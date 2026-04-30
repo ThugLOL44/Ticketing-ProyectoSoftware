@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using TicketingSystem.Application.Interfaces;
-using TicketingSystem.Application.UseCases;
 using TicketingSystem.Application.Services;
 using TicketingSystem.Infrastructure.Persistence;
 using TicketingSystem.Infrastructure.Repositories;
@@ -13,7 +12,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend", policy =>
+    options.AddDefaultPolicy(policy =>
     {
         policy.AllowAnyOrigin()
               .AllowAnyMethod()
@@ -38,10 +37,8 @@ builder.Services.AddScoped<ISeatsRepository, SeatsRepository>();
 builder.Services.AddScoped<IReservationsRepository, ReservationsRepository>();
 builder.Services.AddScoped<IAuditLogRepository, AuditLogRepository>();
 
-builder.Services.AddScoped<GetSeatsByEventUseCase>();
-builder.Services.AddScoped<CreateReservationUseCase>();
-builder.Services.AddScoped<IEventRepository, EventRepository>();
-builder.Services.AddScoped<IEventService, EventService>();
+builder.Services.AddScoped<ISeatService, SeatService>();
+builder.Services.AddScoped<IReservationService, ReservationService>();
 
 var app = builder.Build();
 
@@ -52,7 +49,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("AllowFrontend");
+app.UseCors();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();

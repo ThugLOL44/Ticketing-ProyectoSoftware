@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TicketingSystem.Application.UseCases;
-using TicketingSystem.WebAPI.DTOs;
+using TicketingSystem.Application.DTOs;
+using TicketingSystem.Application.Interfaces;
+
 
 namespace TicketingSystem.WebAPI.Controllers
 {
@@ -9,11 +10,11 @@ namespace TicketingSystem.WebAPI.Controllers
     [Route("api/v1/reservations")]
     public class ReservationsController : ControllerBase
     {
-        private readonly CreateReservationUseCase _createReservation;
+        private readonly IReservationService _reservationService;
 
-        public ReservationsController(CreateReservationUseCase createReservation)
+        public ReservationsController(IReservationService reservationService)
         {
-            _createReservation = createReservation;
+            _reservationService = reservationService;
         }
 
         [HttpPost]
@@ -21,7 +22,7 @@ namespace TicketingSystem.WebAPI.Controllers
         {
             try
             {
-                var reservation = await _createReservation.ExecuteAsync(request.SeatId, request.UserId);
+                var reservation = await _reservationService.CreateAsync(request.SeatId, request.UserId);
 
                 var dto = new ReservationDto
                 {

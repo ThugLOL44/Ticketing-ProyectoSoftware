@@ -1,5 +1,4 @@
-﻿namespace TicketingSystem.WebAPI.DTOs;
-
+﻿namespace TicketingSystem.Application.DTOs;
 public class ReservationDto
 {
     public Guid Id { get; set; }
@@ -8,4 +7,5 @@ public class ReservationDto
     public string Status { get; set; } = string.Empty;
     public DateTimeOffset ReservedAt { get; set; }
     public DateTimeOffset ExpiresAt { get; set; }
+    
 }
