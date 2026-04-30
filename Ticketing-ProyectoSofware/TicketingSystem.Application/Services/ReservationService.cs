@@ -2,15 +2,15 @@
 using TicketingSystem.Domain.Entities;
 using TicketingSystem.Domain.Enums;
 
-namespace TicketingSystem.Application.UseCases;
+namespace TicketingSystem.Application.Services;
 
-public class CreateReservationUseCase
+public class ReservationService : IReservationService
 {
     private readonly ISeatsRepository _seatsRepository;
     private readonly IReservationsRepository _reservationsRepository;
     private readonly IAuditLogRepository _auditLogRepository;
 
-    public CreateReservationUseCase(
+    public ReservationService(
         ISeatsRepository seatsRepository,
         IReservationsRepository reservationsRepository,
         IAuditLogRepository auditLogRepository)
@@ -20,7 +20,7 @@ public class CreateReservationUseCase
         _auditLogRepository = auditLogRepository;
     }
 
-    public async Task<Reservation> ExecuteAsync(Guid seatId, Guid userId)
+    public async Task<Reservation> CreateAsync(Guid seatId, Guid userId)
     {
         var seat = await _seatsRepository.GetByIdAsync(seatId)
             ?? throw new KeyNotFoundException($"Butaca {seatId} no encontrada.");
