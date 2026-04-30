@@ -8,5 +8,6 @@ public class Event
     public DateTimeOffset EventDate { get; set; }
     public string Status { get; set; } = "Active";
 
+    public string? ImageUrl { get; set; }
     public ICollection<Sector> Sectors { get; set; } = new List<Sector>();
 }
