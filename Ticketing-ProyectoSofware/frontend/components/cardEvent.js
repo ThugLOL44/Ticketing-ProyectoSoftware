@@ -11,7 +11,6 @@ function createEventCard(event) {
         hour12: false
     });
 
-    /* Hay que agregar campo imageUrl a la base de datos de eventos */
     const imageSrc = event.imageUrl 
         ? event.imageUrl 
         : 'https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=400&q=80';
