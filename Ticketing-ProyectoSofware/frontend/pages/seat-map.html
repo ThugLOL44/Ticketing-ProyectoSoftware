@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrandLine Tickets - Mapa de Asientos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/seat-map.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <span class="navbar-brand">GrandLine Tickets</span>
+            <a href="index.html" class="nav-link">← Volver al catálogo</a>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1 class="page-title">Mapa de Asientos</h1>
+        <p class="page-subtitle">Seleccioná una butaca disponible para reservar</p>
+
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-dot dot-available"></div>
+                <span>Disponible</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot dot-reserved"></div>
+                <span>Reservado</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot dot-sold"></div>
+                <span>Vendido</span>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="stage">
+        <div class="stage-bar">ESCENARIO</div>
+    </div>
+
+  
+    <div id="spinner" class="spinner-wrapper">
+        <div class="spinner-circle"></div>
+        <p>Cargando mapa de asientos...</p>
+    </div>
+
+
+    <div id="seatMap" class="seat-map-container hidden"></div>
+
+   
+    <div class="toast-container" id="toastContainer"></div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 GrandLine Tickets - Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../services/api.js"></script>
+    <script src="../components/seatCard.js"></script>
+    <script src="../pages/seat-map.js"></script>
+</body>
+</html>
