@@ -32,7 +32,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 );
 
-
+builder.Services.AddScoped<IEventRepository, EventRepository>();
+builder.Services.AddScoped<IEventService, EventService>();
 builder.Services.AddScoped<ISeatsRepository, SeatsRepository>();
 builder.Services.AddScoped<IReservationsRepository, ReservationsRepository>();
 builder.Services.AddScoped<IAuditLogRepository, AuditLogRepository>();
