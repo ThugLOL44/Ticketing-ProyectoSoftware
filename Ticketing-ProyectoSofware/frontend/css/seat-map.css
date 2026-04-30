@@ -274,3 +274,34 @@ footer {
     color: #9ca3af;
     font-size: 0.9rem;
 }
+
+@media (max-width: 600px) {
+    .seat {
+        width: 22px;
+        height: 22px;
+        font-size: 6px;
+    }
+
+    .seats-row {
+        gap: 4px;
+        justify-content: flex-start;
+    }
+
+    .sector-row {
+        justify-content: flex-start;
+        padding-left: 8px;
+    }
+
+    .sector-block {
+        padding: 16px 12px;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    .legend {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+}

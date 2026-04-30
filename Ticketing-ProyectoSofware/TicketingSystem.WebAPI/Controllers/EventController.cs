@@ -18,7 +18,7 @@ namespace TicketingSystem.WebAPI.Controllers
         public async Task<IActionResult> GetPagedEvents(int page = 1, int pageSize = 10)
         {
             try
-            {s
+            {
                 var (events, totalCount) = await _eventService.GetPagedEventsAsync(page, pageSize);
                 return Ok(new { Events = events, TotalCount = totalCount, Page = page, PageSize = pageSize, TotalPages = (int)Math.Ceiling((double)totalCount / pageSize) });
             }catch (Exception)
