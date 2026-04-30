@@ -95,8 +95,8 @@ body {
 
 .stage-bar {
     background: #1a1a1a;
-    border: 1px solid #333;
-    color: #9ca3af;
+    border: 1px solid #e8c547;
+    color: #e8c547;
     text-align: center;
     padding: 14px;
     font-weight: 700;
@@ -122,15 +122,20 @@ body {
 }
 
 
-.sector-block.vip {
-    background-color: #dd6d69;
-}
-
-
+.sector-block.vip,
 .sector-block.general {
-    background-color: #6acc93;
+    background-color: #111;
+    border: 1px solid #2a2a2a;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+.sector-block.vip:hover,
+.sector-block.general:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(232, 197, 71, 0.25);
+}
 
 .sector-header {
     display: flex;
@@ -142,7 +147,7 @@ body {
 .sector-name {
     font-size: 1.1rem;
     font-weight: 700;
-    color: #000000;
+    color: #e8c547;
     -webkit-text-stroke: 0,5px black
 }
 
@@ -171,7 +176,7 @@ body {
     text-align: center;
     font-size: 11px;
     font-weight: 700;
-    color: #000000;
+    color: #e8c547;
     flex-shrink: 0;
     -webkit-text-stroke: 0,5px black; 
     text-stroke: 0.5px black;
