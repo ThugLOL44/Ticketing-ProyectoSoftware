@@ -123,4 +123,10 @@ async function loadSeatMap() {
     }
 }
 
+function onTimerExpired() {
+    document.getElementById('cartPanel').classList.add('hidden');
+    showToast('Tu reserva expiró — la butaca fue liberada automáticamente.');
+    loadSeatMap();
+}
+
 document.addEventListener('DOMContentLoaded', loadSeatMap);
