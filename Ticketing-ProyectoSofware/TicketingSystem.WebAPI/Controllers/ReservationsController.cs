@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TicketingSystem.Application.DTOs;
+using TicketingSystem.Application.Exceptions;
 using TicketingSystem.Application.Interfaces;
 
 
@@ -36,9 +37,13 @@ namespace TicketingSystem.WebAPI.Controllers
 
                 return Created(string.Empty, dto);
             }
+            catch (SeatConflictException ex)
+            {
+                return Conflict (new { error = ex.Message, seatId = ex.SeatId });
+            }
             catch (InvalidOperationException ex)
             {
-                return BadRequest(new { error = ex.Message });
+                return Conflict(new { error = ex.Message });
             }
             catch (KeyNotFoundException ex)
             {
