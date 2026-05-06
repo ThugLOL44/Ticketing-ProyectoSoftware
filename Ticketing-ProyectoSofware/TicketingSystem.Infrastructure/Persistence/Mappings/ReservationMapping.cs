@@ -25,8 +25,8 @@ namespace TicketingSystem.Infrastructure.Persistence.Mappings
 
 
             builder.HasOne(r => r.Seat)
-                .WithOne(s => s.ActiveReservation)
-                .HasForeignKey<Reservation>(r => r.SeatId)
+                .WithMany()
+                .HasForeignKey(r => r.SeatId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(r => r.User)
