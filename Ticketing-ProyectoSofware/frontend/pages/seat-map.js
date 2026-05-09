@@ -22,7 +22,7 @@ async function handleSeatClick(button, seat) {
     button.disabled = true;
     button.textContent = '...';
 
-const response = await fetch('http://localhost:5158/api/v1/reservations', {
+const response = await fetch('${API_BASE_URL}/api/v1/reservations', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ seatId: seat.id, userId: USER_ID })
@@ -142,7 +142,7 @@ async function loadSeatMap() {
 
 function onTimerExpired() {
     document.getElementById('cartPanel').classList.add('hidden');
-    showToast('Tu reserva expiró — la butaca fue liberada automáticamente.');
+    showToast('Tu reserva expiró — la butaca fue liberada automáticamente.', 'warning');
     loadSeatMap();
 }
 
