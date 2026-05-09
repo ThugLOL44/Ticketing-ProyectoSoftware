@@ -16,7 +16,6 @@ public class ReservationsRepository : IReservationsRepository
     public async Task<Reservation> CreateAsync(Reservation reservation)
     {
         _context.Reservations.Add(reservation);
-        await _context.SaveChangesAsync();
         return reservation;
     }
 }

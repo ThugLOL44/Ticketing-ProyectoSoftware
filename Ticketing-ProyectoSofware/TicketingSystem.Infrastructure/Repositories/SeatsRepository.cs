@@ -33,7 +33,6 @@ public class SeatsRepository : ISeatsRepository
     public async Task UpdateAsync(Seat seat)
     {
         _context.Seats.Update(seat);
-        await _context.SaveChangesAsync();
     }
 
 }
