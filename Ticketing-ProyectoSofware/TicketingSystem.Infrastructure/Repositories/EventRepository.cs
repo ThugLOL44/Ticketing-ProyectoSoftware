@@ -31,7 +31,7 @@ namespace TicketingSystem.Infrastructure.Repositories
                     Name = e.Name,
                     Venue = e.Venue,
                     EventDate = e.EventDate,
-                    status = e.Status,
+                    Status = e.Status,
                     ImageUrl = e.ImageUrl
                 })
                 .ToListAsync();
