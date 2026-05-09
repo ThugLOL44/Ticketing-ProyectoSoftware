@@ -6,30 +6,46 @@ function getEventIdFromUrl() {
     return params.get('eventId') ?? '11111111-1111-1111-1111-111111111111';
 }
 
-function showToast(message) {
+function showToast(message, type = 'success') {
     const container = document.getElementById('toastContainer');
     const toast = document.createElement('div');
-    toast.className = 'toast';
+    toast.className = `toast toast-${type}`;
     toast.textContent = message;
     container.appendChild(toast);
-    setTimeout(() => toast.remove(), 3000);
+    setTimeout(() => {
+        toast.classList.add('toast-fade-out');
+        setTimeout(() => toast.remove(), 400);
+    }, 3500);
 }
 
 async function handleSeatClick(button, seat) {
     button.disabled = true;
     button.textContent = '...';
 
-    try {
-        await createReservation(seat.id, USER_ID);
+const response = await fetch('http://localhost:5158/api/v1/reservations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ seatId: seat.id, userId: USER_ID })
+    });
+
+    if (response.ok) {
         markSeatAsReserved(button);
         button.textContent = seat.seatNumber;
-        showToast(`Butaca ${seat.rowIdentifier}${seat.seatNumber} reservada`);
-    } catch {
-        button.disabled = false;
-        button.className = 'seat seat-available';
-        button.textContent = seat.seatNumber;
-        showToast('No disponible');
+        showToast(`Butaca ${seat.rowIdentifier}${seat.seatNumber} reservada exitosamente`, 'success');
+        return;
     }
+
+    button.disabled = false;
+    button.className = 'seat seat-available';
+    button.textContent = seat.seatNumber;
+
+    if (response.status === 409) {
+        showToast('Otra persona reservó ese asiento justo antes. El mapa fue actualizado.', 'error');
+        await loadSeatMap();
+        return;
+    }
+
+    showToast('No se pudo reservar. Intentá de nuevo.', 'error');
 }
 
 function groupSeatsBySectorAndRow(seats) {
@@ -117,7 +133,8 @@ async function loadSeatMap() {
 
         document.getElementById('spinner').classList.add('hidden');
         document.getElementById('seatMap').classList.remove('hidden');
-    } catch {
+    } catch(err) {
+        console.error('>>> loadSeatMap error:', err);
         document.getElementById('spinner').innerHTML =
             `<p style="color:red">Error al cargar</p>`;
     }

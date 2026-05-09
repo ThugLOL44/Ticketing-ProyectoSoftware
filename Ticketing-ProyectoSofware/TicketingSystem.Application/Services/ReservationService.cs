@@ -26,11 +26,23 @@ public class ReservationService : IReservationService
 
     public async Task<Reservation> CreateAsync(Guid seatId, Guid userId)
     {
-        var seat = await _seatsRepository.GetByIdAsync(seatId)
-            ?? throw new KeyNotFoundException($"Butaca {seatId} no encontrada.");
+            var seat = await _seatsRepository.GetByIdAsync(seatId)
+                ?? throw new KeyNotFoundException($"Butaca {seatId} no encontrada.");
 
         if (seat.Status != SeatStatus.Available)
+        {
+            await _auditLogRepository.LogFailureAsync(new AuditLog
+            {
+                Id = Guid.NewGuid(),
+                UserId = userId,
+                Action = AuditAction.ReservationFailed,
+                EntityType = "Reservation",
+                EntityId = seatId.ToString(),
+                Details = "Reserva fallida: la butaca no estaba disponible.",
+                CreatedAt = DateTimeOffset.UtcNow
+            });
             throw new InvalidOperationException("La butaca no está disponible.");
+        }
 
         await _unitOfWork.BeginTransactionAsync();
 
