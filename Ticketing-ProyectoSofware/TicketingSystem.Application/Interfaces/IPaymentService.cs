@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TicketingSystem.Application.Interfaces
+﻿namespace TicketingSystem.Application.Interfaces
 {
-    internal interface IPaymentService
+    public interface IPaymentService
     {
+        Task ConfirmPaymentAsync(Guid reservationId);
+
     }
 }

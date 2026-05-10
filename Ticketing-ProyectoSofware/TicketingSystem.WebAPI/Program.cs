@@ -44,6 +44,8 @@ builder.Services.AddScoped<IReservationService, ReservationService>();
 builder.Services.AddHostedService<SeatExpirationJob>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddScoped<IPaymentService, PaymentService>();
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
