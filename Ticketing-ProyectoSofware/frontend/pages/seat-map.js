@@ -32,7 +32,7 @@ const response = await fetch(`${API_BASE_URL}/api/v1/reservations`, {
 
     if (response.ok) {
         const datos = await response.json();
-        activeReservation.push({
+        activeReservations.push({
             reservationId: datos.id,
             seatLabel: `${seat.rowIdentifier}${seat.seatNumber}`,
             price: seat.sectorPrice
@@ -205,4 +205,27 @@ function startCountdown() {
     }, 1000);
 }
 
+async function confirmPayment() {
+    const btn = document.getElementById('confirmPaymentBtn');
+    btn.disabled = true;
+    btn.textContent = 'Procesando...';
+
+    try {
+        for (const reserva of activeReservations) {
+            await processPayment(reserva.reservationId);
+        }
+
+        showToast('¡Compra exitosa! Tu entrada fue procesada correctamente.', 'success');
+        clearInterval(countdownInterval);
+        countdownInterval = null;
+        activeReservations = [];
+        document.getElementById('cartPanel').classList.add('hidden');
+        loadSeatMap();
+
+    } catch {
+        showToast('Error al procesar el pago. Intentá nuevamente.', 'error');
+        btn.disabled = false;
+        btn.textContent = 'Confirmar pago';
+    }
+}
 document.addEventListener('DOMContentLoaded', loadSeatMap);
