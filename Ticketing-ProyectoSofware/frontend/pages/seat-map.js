@@ -206,7 +206,7 @@ function startCountdown() {
 }
 
 async function confirmPayment() {
-    const btn = document.getElementById('confirmPaymentBtn');
+    const btn = document.getElementById('confirmPayment');
     btn.disabled = true;
     btn.textContent = 'Procesando...';
 
@@ -220,8 +220,10 @@ async function confirmPayment() {
         countdownInterval = null;
         activeReservations = [];
         document.getElementById('cartPanel').classList.add('hidden');
+        btn.disabled = false;
+        btn.textContent = 'Pagar';
         loadSeatMap();
-
+    
     } catch {
         showToast('Error al procesar el pago. Intentá nuevamente.', 'error');
         btn.disabled = false;
