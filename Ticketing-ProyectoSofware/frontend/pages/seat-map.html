@@ -51,12 +51,15 @@
 
     <div id="seatMap" class="seat-map-container hidden"></div>
 
-    <div id="cartPanel" class="hidden cart-panel-container">
-        <h1>Tu Carrito</h1>
+    <div id="cartPanel" class="hidden cart-panel">
+        <h2 class="cart-title">Tu Carrito</h2>
         <div id="cartItems"></div>
-        <div id="cartTotal"></div>
-        <div id="countdown"><span id="countdownTimer">05:00</span></div>
-        <button id="confirmPayment" onclick="confirmPayment()">Pagar</button>
+        <div id="cartTotal" class="cart-detail"></div>
+        <div class="cart-timer">
+            <div id="countdownTimer" class="timer-display">05:00</div>
+            <p class="timer-label">Tiempo restante para pagar</p>
+        </div>
+        <button id="confirmPayment" class="btn-confirm" onclick="confirmPayment()">Pagar</button>
     </div>
    
     <div class="toast-container" id="toastContainer"></div>

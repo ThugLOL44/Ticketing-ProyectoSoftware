@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TicketingSystem.Application.DTOs
+﻿namespace TicketingSystem.Application.DTOs
 {
     public class CreatePaymentDto
     {

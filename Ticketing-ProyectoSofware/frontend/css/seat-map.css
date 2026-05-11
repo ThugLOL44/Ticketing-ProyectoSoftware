@@ -333,7 +333,7 @@ footer {
 .cart-panel {
     position: fixed;
     bottom: 24px;
-    left: 24px;
+    right: 24px;
     background: #111;
     border: 1px solid #e8c547;
     border-radius: 12px;
