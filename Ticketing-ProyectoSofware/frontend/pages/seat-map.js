@@ -1,5 +1,7 @@
 const USER_ID = '44444444-4444-4444-4444-444444444444';
 const EVENT_ID = getEventIdFromUrl();
+let activeReservations = [];
+let countdownInterval = null;
 
 function getEventIdFromUrl() {
     const params = new URLSearchParams(window.location.search);
@@ -29,6 +31,14 @@ const response = await fetch(`${API_BASE_URL}/api/v1/reservations`, {
     });
 
     if (response.ok) {
+        const datos = await response.json();
+        activeReservation.push({
+            reservationId: datos.id,
+            seatLabel: `${seat.rowIdentifier}${seat.seatNumber}`,
+            price: seat.sectorPrice
+        });
+        renderCart();
+        startCountdown();
         markSeatAsReserved(button);
         button.textContent = seat.seatNumber;
         showToast(`Butaca ${seat.rowIdentifier}${seat.seatNumber} reservada exitosamente`, 'success');
@@ -144,6 +154,55 @@ function onTimerExpired() {
     document.getElementById('cartPanel').classList.add('hidden');
     showToast('Tu reserva expiró — la butaca fue liberada automáticamente.', 'warning');
     loadSeatMap();
+    activeReservations = [];
+    countdownInterval = null;
+}
+
+function renderCart(){
+    const listaReservas = document.getElementById('cartItems');
+    document.getElementById('cartItems').innerHTML = "";
+
+    let total = 0;
+    activeReservations.forEach(reserva => {
+        const itemReserva = document.createElement('div');
+        itemReserva.className = 'cart-item';
+
+        itemReserva.innerHTML = `
+      <span class="seat">Asiento: ${reserva.seatLabel}</span>
+      <span class="price">Precio: $${reserva.price}</span>
+    `;
+
+    total += reserva.price;
+
+    listaReservas.appendChild(itemReserva);   
+    });
+    document.getElementById('cartTotal').innerHTML = `
+      <span class="">Total a pagar: ${total}</span>    
+      `;
+    
+    document.getElementById('cartPanel').classList.remove('hidden');
+}
+
+function startCountdown() {
+    if (countdownInterval !== null) return;
+
+    let segundos = 5 * 60;
+
+    countdownInterval = setInterval(() => {
+        segundos--;
+
+        const minutos = Math.floor(segundos / 60);
+        const segsRestantes = segundos % 60;
+
+        document.getElementById('countdownTimer').textContent = 
+            `${String(minutos).padStart(2, '0')}:${String(segsRestantes).padStart(2, '0')}`;
+
+        if (segundos <= 0) {
+            clearInterval(countdownInterval);
+            countdownInterval = null;
+            onTimerExpired();
+        }
+    }, 1000);
 }
 
 document.addEventListener('DOMContentLoaded', loadSeatMap);
