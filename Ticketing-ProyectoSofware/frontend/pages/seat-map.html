@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../css/seat-map.css">
 </head>
 <body>
-
     <nav class="navbar">
         <div class="navbar-container">
             <span class="navbar-brand">GrandLine Tickets</span>
@@ -19,8 +18,6 @@
     <div class="page-header">
         <h1 class="page-title">Mapa de Asientos</h1>
         <p class="page-subtitle">Seleccioná una butaca disponible para reservar</p>
-
-        
         <div class="legend">
             <div class="legend-item">
                 <div class="legend-dot dot-available"></div>
@@ -37,17 +34,14 @@
         </div>
     </div>
 
-    
     <div class="stage">
         <div class="stage-bar">ESCENARIO</div>
     </div>
 
-  
     <div id="spinner" class="spinner-wrapper">
         <div class="spinner-circle"></div>
         <p>Cargando mapa de asientos...</p>
     </div>
-
 
     <div id="seatMap" class="seat-map-container hidden"></div>
 
@@ -59,9 +53,79 @@
             <div id="countdownTimer" class="timer-display">05:00</div>
             <p class="timer-label">Tiempo restante para pagar</p>
         </div>
-        <button id="confirmPayment" class="btn-confirm" onclick="confirmPayment()">Pagar</button>
+        <button id="confirmPayment" class="btn-confirm" onclick="openPaymentModal()">Pagar</button>
     </div>
-   
+<div id="paymentOverlay" class="cart-overlay hidden"></div>
+<div id="paymentModal" class="hidden payment-modal">
+    
+    <div class="payment-summary">
+        <div class="summary-header" onclick="toggleSummary()">
+            <span id="summaryTitle">🎟 0 butacas — $0</span>
+            <span id="summaryArrow">▼</span>
+        </div>
+        <div id="summaryItems" class="summary-items hidden"></div>
+        <div class="summary-timer">
+            <span id="paymentTimer" class="timer-display-sm">05:00</span>
+            <span class="timer-label">tiempo restante</span>
+        </div>
+    </div>
+
+    <hr class="modal-divider">
+
+    <h2 class="cart-title">Completá tus datos</h2>
+    <div class="payment-form">
+        <div class="form-group">
+            <label>Nombre y apellido</label>
+            <input type="text" id="payerName" placeholder="Juan Pérez">
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="payerEmail" placeholder="juan@email.com">
+        </div>
+        <div class="form-group">
+            <label>DNI</label>
+            <input type="text" id="payerDni" placeholder="12345678">
+        </div>
+        <div class="form-group">
+            <label>Medio de pago</label>
+            <select id="paymentMethod" onchange="toggleCardFields()">
+                <option value="">Seleccioná</option>
+                <option value="credito">Tarjeta de crédito</option>
+                <option value="debito">Tarjeta de débito</option>
+                <option value="transferencia">Transferencia bancaria</option>
+            </select>
+        </div>
+        <div id="cardFields" class="hidden">
+            <div class="form-group">
+                <label>Número de tarjeta</label>
+                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Vencimiento</label>
+                    <input type="text" id="cardExpiry" placeholder="MM/AA" maxlength="5">
+                </div>
+                <div class="form-group">
+                    <label>CVV</label>
+                    <input type="text" id="cardCvv" placeholder="123" maxlength="3">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="payment-modal-actions">
+        <button class="btn-cancel" onclick="closePaymentModal()">Cancelar</button>
+        <button class="btn-confirm" onclick="confirmPayment()">Confirmar pago</button>
+    </div>
+</div>
+
+    <div id="successModal" class="hidden payment-modal success-modal">
+        <div class="success-icon">🎟</div>
+        <h2 class="cart-title">¡Compra exitosa!</h2>
+        <p class="success-subtitle">Tu entrada fue procesada correctamente.</p>
+        <div id="successItems"></div>
+        <button class="btn-confirm" onclick="closeSuccessModal()">Cerrar</button>
+    </div>
+
     <div class="toast-container" id="toastContainer"></div>
 
     <footer>

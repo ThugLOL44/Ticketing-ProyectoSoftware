@@ -138,6 +138,10 @@ function renderSeatMap(seats) {
 
 async function loadSeatMap() {
     try {
+        document.getElementById('seatMap').innerHTML = '';
+        document.getElementById('seatMap').classList.add('hidden');
+        document.getElementById('spinner').classList.remove('hidden');
+        
         const seats = await getSeats(EVENT_ID);
         renderSeatMap(seats);
 
@@ -152,35 +156,34 @@ async function loadSeatMap() {
 
 function onTimerExpired() {
     document.getElementById('cartPanel').classList.add('hidden');
+    document.getElementById('paymentOverlay').classList.add('hidden');
+    document.getElementById('paymentModal').classList.add('hidden');
     showToast('Tu reserva expiró — la butaca fue liberada automáticamente.', 'warning');
-    loadSeatMap();
     activeReservations = [];
     countdownInterval = null;
+    setTimeout(() => loadSeatMap(), 35000);
 }
 
-function renderCart(){
+function renderCart() {
     const listaReservas = document.getElementById('cartItems');
-    document.getElementById('cartItems').innerHTML = "";
+    listaReservas.innerHTML = "";
 
     let total = 0;
     activeReservations.forEach(reserva => {
         const itemReserva = document.createElement('div');
         itemReserva.className = 'cart-item';
-
         itemReserva.innerHTML = `
-      <span class="seat">Asiento: ${reserva.seatLabel}</span>
-      <span class="price">Precio: $${reserva.price}</span>
-    `;
-
-    total += reserva.price;
-
-    listaReservas.appendChild(itemReserva);   
+            <span class="seat">${reserva.seatLabel}</span>
+            <span class="price">$${reserva.price.toLocaleString('es-AR')}</span>
+        `;
+        total += reserva.price;
+        listaReservas.appendChild(itemReserva);
     });
+
     document.getElementById('cartTotal').innerHTML = `
-      <span class="">Total a pagar: ${total}</span>    
-      `;
-    
-    document.getElementById('cartPanel').classList.remove('hidden');
+        <span class="">Total a pagar: $${total.toLocaleString('es-AR')}</span>
+    `;
+ document.getElementById('cartPanel').classList.remove('hidden');
 }
 
 function startCountdown() {
@@ -193,9 +196,10 @@ function startCountdown() {
 
         const minutos = Math.floor(segundos / 60);
         const segsRestantes = segundos % 60;
+        const tiempo = `${String(minutos).padStart(2, '0')}:${String(segsRestantes).padStart(2, '0')}`;
 
-        document.getElementById('countdownTimer').textContent = 
-            `${String(minutos).padStart(2, '0')}:${String(segsRestantes).padStart(2, '0')}`;
+        document.getElementById('countdownTimer').textContent = tiempo;
+        document.getElementById('paymentTimer').textContent = tiempo;
 
         if (segundos <= 0) {
             clearInterval(countdownInterval);
@@ -206,7 +210,7 @@ function startCountdown() {
 }
 
 async function confirmPayment() {
-    const btn = document.getElementById('confirmPayment');
+    const btn = document.querySelector('#paymentModal .btn-confirm');
     btn.disabled = true;
     btn.textContent = 'Procesando...';
 
@@ -215,19 +219,92 @@ async function confirmPayment() {
             await processPayment(reserva.reservationId);
         }
 
-        showToast('¡Compra exitosa! Tu entrada fue procesada correctamente.', 'success');
+        document.getElementById('paymentModal').classList.add('hidden');
+
+        const successItems = document.getElementById('successItems');
+        successItems.innerHTML = '';
+        activeReservations.forEach(reserva => {
+            const item = document.createElement('div');
+            item.className = 'success-item';
+            item.textContent = `${reserva.seatLabel} — $${reserva.price.toLocaleString('es-AR')}`;
+            successItems.appendChild(item);
+        });
+
+        document.getElementById('successModal').classList.remove('hidden');
+
         clearInterval(countdownInterval);
         countdownInterval = null;
         activeReservations = [];
         document.getElementById('cartPanel').classList.add('hidden');
-        btn.disabled = false;
-        btn.textContent = 'Pagar';
         loadSeatMap();
-    
+
     } catch {
         showToast('Error al procesar el pago. Intentá nuevamente.', 'error');
         btn.disabled = false;
         btn.textContent = 'Confirmar pago';
     }
 }
+
+function openPaymentModal() {
+    let total = 0;
+    const summaryItems = document.getElementById('summaryItems');
+    summaryItems.innerHTML = '';
+    activeReservations.forEach(reserva => {
+        total += reserva.price;
+        const item = document.createElement('div');
+        item.className = 'summary-item';
+        item.innerHTML = `<span>${reserva.seatLabel}</span> <span>$${reserva.price.toLocaleString('es-AR')}</span>`;
+        summaryItems.appendChild(item);
+    });
+
+    document.getElementById('summaryTitle').textContent =
+        `🎟 ${activeReservations.length} butaca${activeReservations.length > 1 ? 's' : ''} — $${total.toLocaleString('es-AR')}`;
+
+    summaryItems.classList.add('hidden');
+    document.getElementById('summaryArrow').textContent = '▼';
+
+    document.getElementById('cartPanel').classList.add('hidden');
+    document.getElementById('confirmPayment').classList.add('hidden');
+    document.getElementById('paymentOverlay').classList.remove('hidden');
+    document.getElementById('paymentModal').classList.remove('hidden');
+}
+
+function closePaymentModal() {
+    document.getElementById('cartPanel').classList.remove('hidden');
+    document.getElementById('confirmPayment').classList.remove('hidden');
+    document.getElementById('paymentOverlay').classList.add('hidden');
+    document.getElementById('paymentModal').classList.add('hidden');
+}
+
+function toggleSummary() {
+    const items = document.getElementById('summaryItems');
+    const arrow = document.getElementById('summaryArrow');
+    items.classList.toggle('hidden');
+    arrow.textContent = items.classList.contains('hidden') ? '▼' : '▲';
+}
+
+function toggleCardFields() {
+    const method = document.getElementById('paymentMethod').value;
+    const cardFields = document.getElementById('cardFields');
+    if (method === 'credito' || method === 'debito') {
+        cardFields.classList.remove('hidden');
+    } else {
+        cardFields.classList.add('hidden');
+    }
+}
+
+function closeSuccessModal() {
+    document.getElementById('successModal').classList.add('hidden');
+    document.getElementById('paymentOverlay').classList.remove('hidden');
+
+    const msg = document.createElement('div');
+    msg.className = 'redirect-message';
+    msg.textContent = 'Redirigiendo al catálogo...';
+    document.body.appendChild(msg);
+
+    setTimeout(() => {
+        window.location.href = 'index.html';
+    }, 1500);
+}
+
 document.addEventListener('DOMContentLoaded', loadSeatMap);

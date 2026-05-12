@@ -298,6 +298,173 @@ footer {
     font-size: 0.9rem;
 }
 
+/* ── Payment Modal ── */
+.payment-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #111;
+    border: 1px solid #e8c547;
+    border-radius: 12px;
+    padding: 28px;
+    min-width: 480px;
+    max-width: 600px;
+    width: 90%;
+    z-index: 1000;
+}
+
+.payment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 16px 0;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-group label {
+    color: #9ca3af;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: #f5c842;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.875rem;
+    padding: 8px 12px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #e8c547;
+}
+
+.form-group select option {
+    background: #1a1a1a;
+    color: #f5c842;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.payment-modal-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.btn-cancel {
+    flex: 1;
+    padding: 10px;
+    background: transparent;
+    color: #9ca3af;
+    border: 1px solid #333;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.btn-cancel:hover {
+    border-color: #9ca3af;
+    color: #f5f5f5;
+}
+
+/* ── Success Modal ── */
+.success-modal {
+    text-align: center;
+}
+
+.success-icon {
+    font-size: 3rem;
+    margin-bottom: 8px;
+}
+
+.success-subtitle {
+    color: #9ca3af;
+    font-size: 0.875rem;
+    margin: 4px 0 16px;
+}
+
+.success-item {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    color: #d1d5db;
+    font-size: 0.875rem;
+    margin: 4px 0;
+    padding: 8px 12px;
+    text-align: left;
+}
+/* ── Payment Summary ── */
+.payment-summary {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+}
+
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    color: #e8c547;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.summary-timer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid #2a2a2a;
+}
+
+.timer-display-sm {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #22c55e;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 2px;
+}
+
+.modal-divider {
+    border: none;
+    border-top: 1px solid #2a2a2a;
+    margin: 16px 0;
+}
+.redirect-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #e8c547;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+    z-index: 1001;
+}
+
 @media (max-width: 600px) {
     .seat {
         width: 22px;
@@ -327,18 +494,45 @@ footer {
         flex-wrap: wrap;
         gap: 12px;
     }
+
+    .cart-panel {
+        width: calc(100% - 48px);
+        min-width: unset;
+        top: 60px;
+        right: 12px;
+    }
+
+    .payment-modal {
+        min-width: unset;
+        width: calc(100% - 32px);
+        padding: 20px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
 }
 
-/* ── Cart Panel ── */
+
+.cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+}
+
 .cart-panel {
     position: fixed;
-    bottom: 24px;
+    top: 80px;
     right: 24px;
     background: #111;
     border: 1px solid #e8c547;
     border-radius: 12px;
     padding: 20px;
-    min-width: 240px;
+    min-width: 200px;
     z-index: 1000;
 }
 
