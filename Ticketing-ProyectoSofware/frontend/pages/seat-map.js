@@ -161,7 +161,7 @@ function onTimerExpired() {
     showToast('Tu reserva expiró — la butaca fue liberada automáticamente.', 'warning');
     activeReservations = [];
     countdownInterval = null;
-    setTimeout(() => loadSeatMap(), 35000);
+    loadSeatMap();
 }
 
 function renderCart() {
