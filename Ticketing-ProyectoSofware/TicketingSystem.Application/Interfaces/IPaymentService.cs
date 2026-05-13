@@ -1,8 +1,6 @@
-﻿namespace TicketingSystem.Application.Interfaces
-{
-    public interface IPaymentService
-    {
-        Task ConfirmPaymentAsync(Guid reservationId);
+﻿namespace TicketingSystem.Application.Interfaces;
 
-    }
+public interface IPaymentService
+{
+    Task ConfirmPaymentAsync(List<Guid> reservationIds);
 }

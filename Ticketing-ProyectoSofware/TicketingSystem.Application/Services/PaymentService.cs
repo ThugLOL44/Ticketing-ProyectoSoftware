@@ -21,23 +21,27 @@ public class PaymentService : IPaymentService
         _unitOfWork = unitOfWork;
     }
 
-    public async Task ConfirmPaymentAsync(Guid reservationId)
+    public async Task ConfirmPaymentAsync(List<Guid> reservationIds)
     {
-        var reservation = await _reservationsRepository.GetByIdWithSeatAsync(reservationId)
-            ?? throw new NotFoundException("No se encontró la reserva.");
-
-        if (reservation.Status != "Pending")
-            throw new InvalidOperationException("La reserva no está disponible para pagar.");
-
         await Task.Delay(1500);
 
         await _unitOfWork.BeginTransactionAsync();
         try
         {
-            reservation.Status = "Paid";
-            reservation.Seat.Status = SeatStatus.Sold;
+            foreach (var reservationId in reservationIds)
+            {
+                var reservation = await _reservationsRepository.GetByIdWithSeatAsync(reservationId)
+                    ?? throw new NotFoundException($"Reserva {reservationId} no encontrada.");
 
-            await _auditLogRepository.LogAsync(BuildAuditLog(reservation));
+                if (reservation.Status != "Pending")
+                    throw new InvalidOperationException(
+                        $"La reserva {reservationId} no está disponible para pagar.");
+
+                reservation.Status = "Paid";
+                reservation.Seat.Status = SeatStatus.Sold;
+
+                await _auditLogRepository.LogAsync(BuildAuditLog(reservation));
+            }
 
             await _unitOfWork.CommitAsync();
         }
