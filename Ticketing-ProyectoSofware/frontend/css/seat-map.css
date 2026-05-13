@@ -431,6 +431,26 @@ footer {
     font-size: 0.9rem;
 }
 
+.summary-items {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.summary-items.hidden {
+    display: none !important;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    color: #e8c547;
+    font-size: 0.8rem;
+    padding: 4px 0;
+    border-bottom: 1px solid #2a2a2a;
+}
+
 .summary-timer {
     display: flex;
     align-items: center;
@@ -465,57 +485,6 @@ footer {
     z-index: 1001;
 }
 
-@media (max-width: 600px) {
-    .seat {
-        width: 22px;
-        height: 22px;
-        font-size: 6px;
-    }
-
-    .seats-row {
-        gap: 4px;
-        justify-content: flex-start;
-    }
-
-    .sector-row {
-        justify-content: flex-start;
-        padding-left: 8px;
-    }
-
-    .sector-block {
-        padding: 16px 12px;
-    }
-
-    .page-title {
-        font-size: 1.5rem;
-    }
-
-    .legend {
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-
-    .cart-panel {
-        width: calc(100% - 48px);
-        min-width: unset;
-        top: 60px;
-        right: 12px;
-    }
-
-    .payment-modal {
-        min-width: unset;
-        width: calc(100% - 32px);
-        padding: 20px;
-        max-height: 90vh;
-        overflow-y: auto;
-    }
-
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-}
-
-
 .cart-overlay {
     position: fixed;
     inset: 0;
@@ -531,13 +500,12 @@ footer {
     background: #111;
     border: 1px solid #e8c547;
     border-radius: 12px;
-    padding: 20px;
-    min-width: 200px;
+    padding: 16px;
+    min-width: 180px;
     z-index: 1000;
 }
 
 .cart-title { color: #e8c547; font-size: 1rem; font-weight: 700; margin: 0 0 12px; }
-
 .cart-detail { color: #d1d5db; font-size: 0.875rem; margin: 4px 0; }
 
 .cart-timer { text-align: center; margin: 16px 0; }
@@ -569,3 +537,98 @@ footer {
 }
 
 .btn-confirm:disabled { background: #374151; color: #6b7280; cursor: not-allowed; }
+
+@media (max-width: 600px) {
+    .seat {
+        width: 30px;
+        height: 30px;
+        font-size: 6px;
+    }
+
+    .seats-row {
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .sector-row {
+        justify-content: center;
+        padding-left: 8px;
+    }
+
+    .sector-block {
+        padding: 16px 12px;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    .legend {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .cart-panel {
+        position: fixed;
+        top: 56px;
+        right: 8px;
+        width: 140px;
+        min-width: unset;
+        padding: 8px 10px;
+    }
+    .payment-modal {
+        min-width: unset;
+        width: calc(100% - 80px);
+        padding: 16px;
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .timer-display {
+        font-size: 1rem;
+    }
+
+    .timer-label {
+        font-size: 0.65rem;
+    }
+
+    .cart-title {
+        font-size: 0.6rem;
+        margin: 0 0 8px;
+    }
+
+    .cart-detail {
+        font-size: 0.75rem;
+    }
+
+    .cart-timer {
+        margin: 6px 0;
+    }
+
+    .success-modal {
+        min-width: unset;
+        width: calc(100% - 80px);
+        padding: 20px;
+    }
+
+    .btn-confirm {
+        font-size: 0.8rem;
+        padding: 8px;
+        margin-top: 6px;
+    }
+    .seat-map-container {
+        padding: 0 8px 60px;
+    }
+
+    .page-header {
+        padding: 0 8px;
+    }
+
+    .stage {
+        padding: 0 8px;
+    }
+}
