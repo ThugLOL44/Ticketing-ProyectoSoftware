@@ -215,9 +215,8 @@ async function confirmPayment() {
     btn.textContent = 'Procesando...';
 
     try {
-        for (const reserva of activeReservations) {
-            await processPayment(reserva.reservationId);
-        }
+        const reservationIds = activeReservations.map(r => r.reservationId);
+        await confirmAllPayments(reservationIds);
 
         document.getElementById('paymentModal').classList.add('hidden');
 
