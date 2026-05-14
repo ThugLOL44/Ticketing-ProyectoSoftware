@@ -5,4 +5,5 @@ namespace TicketingSystem.Application.Interfaces;
 public interface IReservationService
 {
     Task<Reservation> CreateAsync(Guid seatId, Guid userId);
+    Task CancelReservationsAsync(List<Guid> reservationIds);
 }

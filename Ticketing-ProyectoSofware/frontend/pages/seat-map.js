@@ -154,13 +154,15 @@ async function loadSeatMap() {
     }
 }
 
-function onTimerExpired() {
+async function onTimerExpired() {
     document.getElementById('cartPanel').classList.add('hidden');
     document.getElementById('paymentOverlay').classList.add('hidden');
     document.getElementById('paymentModal').classList.add('hidden');
     showToast('Tu reserva expiró — la butaca fue liberada automáticamente.', 'warning');
+    const ids = activeReservations.map(reserva => reserva.reservationId)
     activeReservations = [];
     countdownInterval = null;
+    await cancelReservations(ids);
     loadSeatMap();
 }
 
@@ -245,6 +247,27 @@ async function confirmPayment() {
     }
 }
 
+document.addEventListener('DOMContentLoaded', loadSeatMap);
+
+document.addEventListener('visibilitychange', async () => {
+    if (document.visibilityState === 'hidden' && activeReservations.length > 0) {
+        const ids = activeReservations.map(r => r.reservationId);
+        activeReservations = [];
+        countdownInterval = null;
+        await cancelReservations(ids);
+    }
+});
+
+window.addEventListener('beforeunload', () => {
+    if (activeReservations.length === 0) return;
+    const ids = activeReservations.map(r => r.reservationId);
+    fetch(`${API_BASE_URL}/api/v1/reservations/cancel`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reservationIds: ids }),
+        keepalive: true
+    });
+});
 function openPaymentModal() {
     let total = 0;
     const summaryItems = document.getElementById('summaryItems');
@@ -307,4 +330,3 @@ function closeSuccessModal() {
     }, 1500);
 }
 
-document.addEventListener('DOMContentLoaded', loadSeatMap);

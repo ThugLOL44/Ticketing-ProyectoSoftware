@@ -50,5 +50,14 @@ namespace TicketingSystem.WebAPI.Controllers
                 return NotFound(new { error = ex.Message });
             }
         }
+
+        [HttpPost("cancel")]
+        public async Task<IActionResult> CancelReservations([FromBody] CancelReservationsDto request)
+        {
+
+            await _reservationService.CancelReservationsAsync(request.ReservationIds ?? new List<Guid>());
+            return NoContent();
+            
+        }
     }
 }

@@ -99,4 +99,38 @@ public class ReservationService : IReservationService
         }
 
     }
+    public async Task CancelReservationsAsync(List<Guid> reservationIds)
+    {
+        await _unitOfWork.BeginTransactionAsync();
+        try
+        {
+            foreach (var reservationId in reservationIds)
+            {
+                var reservation = await _reservationsRepository.GetByIdWithSeatAsync(reservationId);
+
+                if (reservation == null || reservation.Status != "Pending")
+                    continue;
+
+                reservation.Status = "Expired";
+                reservation.Seat.Status = SeatStatus.Available;
+
+                await _auditLogRepository.LogAsync(new AuditLog
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = reservation.UserId,
+                    Action = AuditAction.ReservationExpired,
+                    EntityType = "Reservation",
+                    EntityId = reservation.Id.ToString(),
+                    Details = $"Reserva cancelada por expiración del timer del usuario.",
+                    CreatedAt = DateTimeOffset.UtcNow
+                });
+            }
+            await _unitOfWork.CommitAsync();
+        }
+        catch
+        {
+            await _unitOfWork.RollbackAsync();
+            throw;
+        }
+    }
 }
