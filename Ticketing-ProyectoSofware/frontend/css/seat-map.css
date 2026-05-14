@@ -501,9 +501,10 @@ footer {
     border: 1px solid #e8c547;
     border-radius: 12px;
     padding: 16px;
-    min-width: 180px;
+    min-width: 260px;
     z-index: 1000;
 }
+
 
 .cart-title { color: #e8c547; font-size: 1rem; font-weight: 700; margin: 0 0 12px; }
 .cart-detail { color: #d1d5db; font-size: 0.875rem; margin: 4px 0; }

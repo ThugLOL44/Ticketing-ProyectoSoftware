@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TicketingSystem.Application.Interfaces
+﻿namespace TicketingSystem.Application.Interfaces
 {
     public interface IUnitOfWork : IAsyncDisposable
     {

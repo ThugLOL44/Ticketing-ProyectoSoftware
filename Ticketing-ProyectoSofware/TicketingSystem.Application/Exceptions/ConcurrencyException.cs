@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TicketingSystem.Application.Exceptions
+﻿namespace TicketingSystem.Application.Exceptions
 {
     public class ConcurrencyException : Exception
     { 
