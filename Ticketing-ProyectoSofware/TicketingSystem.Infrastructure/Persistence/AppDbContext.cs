@@ -58,8 +58,8 @@ namespace TicketingSystem.Infrastructure.Persistence
                 var generalId = new Guid($"{prefix}222222-2222-2222-2222-222222222222");
                 var vipId = new Guid($"{prefix}333333-3333-3333-3333-333333333333");
 
-                sectores.Add(new Sector { Id = generalId, EventId = eventoId, Name = "General", Price = 5000m, Capacity = 50 });
-                sectores.Add(new Sector { Id = vipId, EventId = eventoId, Name = "VIP", Price = 15000m, Capacity = 50 });
+                sectores.Add(new Sector { Id = generalId, EventId = eventoId, Name = "General", Price = 60000m, Capacity = 50 });
+                sectores.Add(new Sector { Id = vipId, EventId = eventoId, Name = "VIP", Price = 90000m, Capacity = 50 });
 
                 for (int numero = 1; numero <= 50; numero++)
                 {

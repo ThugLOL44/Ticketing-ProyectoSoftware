@@ -16,6 +16,11 @@ public class AuditLogRepository : IAuditLogRepository
     public async Task LogAsync(AuditLog entry)
     {
         _context.AuditLogs.Add(entry);
+    }
+
+    public async Task LogFailureAsync(AuditLog entry)
+    {
+        _context.AuditLogs.Add(entry);
         await _context.SaveChangesAsync();
     }
 }

@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TicketingSystem.Application.Interfaces;
 using TicketingSystem.Application.Services;
+using TicketingSystem.Infrastructure.BackgroundJobs;
 using TicketingSystem.Infrastructure.Persistence;
 using TicketingSystem.Infrastructure.Repositories;
 
@@ -40,7 +41,11 @@ builder.Services.AddScoped<IAuditLogRepository, AuditLogRepository>();
 
 builder.Services.AddScoped<ISeatService, SeatService>();
 builder.Services.AddScoped<IReservationService, ReservationService>();
+builder.Services.AddHostedService<SeatExpirationJob>();
 
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddScoped<IPaymentService, PaymentService>();
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

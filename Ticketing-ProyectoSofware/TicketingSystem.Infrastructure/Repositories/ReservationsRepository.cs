@@ -1,4 +1,5 @@
-﻿using TicketingSystem.Application.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using TicketingSystem.Application.Interfaces;
 using TicketingSystem.Domain.Entities;
 using TicketingSystem.Infrastructure.Persistence;
 
@@ -16,7 +17,13 @@ public class ReservationsRepository : IReservationsRepository
     public async Task<Reservation> CreateAsync(Reservation reservation)
     {
         _context.Reservations.Add(reservation);
-        await _context.SaveChangesAsync();
         return reservation;
+    }
+
+    public async Task<Reservation?> GetByIdWithSeatAsync(Guid reservationId)
+    {
+        return await _context.Reservations
+            .Include(r => r.Seat)
+            .FirstOrDefaultAsync(r => r.Id == reservationId);
     }
 }

@@ -30,3 +30,24 @@ async function getEvents(page, pageSize) {
     
     return response.json();
 }
+
+async function confirmAllPayments(reservationIds) {
+    const response = await fetch(`${API_BASE_URL}/api/v1/payments`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reservationIds })
+    });
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Error al procesar el pago');
+    }
+    return response.json();
+}
+
+async function cancelReservations(reservationIds){
+    const response = await fetch(`${API_BASE_URL}/api/v1/reservations/cancel`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reservationIds })
+    });
+}

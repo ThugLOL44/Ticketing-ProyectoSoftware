@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TicketingSystem.Infrastructure.Persistence;
 
@@ -11,9 +12,11 @@ using TicketingSystem.Infrastructure.Persistence;
 namespace TicketingSystem.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260504194722_RemoveUniqueIndexOnReservationSeatId")]
+    partial class RemoveUniqueIndexOnReservationSeatId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -8379,7 +8382,7 @@ namespace TicketingSystem.Infrastructure.Migrations
                             Capacity = 50,
                             EventId = new Guid("11111111-1111-1111-1111-111111111111"),
                             Name = "General",
-                            Price = 60000m
+                            Price = 5000m
                         },
                         new
                         {
@@ -8387,7 +8390,7 @@ namespace TicketingSystem.Infrastructure.Migrations
                             Capacity = 50,
                             EventId = new Guid("11111111-1111-1111-1111-111111111111"),
                             Name = "VIP",
-                            Price = 90000m
+                            Price = 15000m
                         },
                         new
                         {
@@ -8395,7 +8398,7 @@ namespace TicketingSystem.Infrastructure.Migrations
                             Capacity = 50,
                             EventId = new Guid("11111111-1111-1111-1111-222222222222"),
                             Name = "General",
-                            Price = 60000m
+                            Price = 5000m
                         },
                         new
                         {
@@ -8403,7 +8406,7 @@ namespace TicketingSystem.Infrastructure.Migrations
                             Capacity = 50,
                             EventId = new Guid("11111111-1111-1111-1111-222222222222"),
                             Name = "VIP",
-                            Price = 90000m
+                            Price = 15000m
                         },
                         new
                         {
@@ -8411,7 +8414,7 @@ namespace TicketingSystem.Infrastructure.Migrations
                             Capacity = 50,
                             EventId = new Guid("11111111-1111-1111-1111-333333333333"),
                             Name = "General",
-                            Price = 60000m
+                            Price = 5000m
                         },
                         new
                         {
@@ -8419,7 +8422,7 @@ namespace TicketingSystem.Infrastructure.Migrations
                             Capacity = 50,
                             EventId = new Guid("11111111-1111-1111-1111-333333333333"),
                             Name = "VIP",
-                            Price = 90000m
+                            Price = 15000m
                         },
                         new
                         {
@@ -8427,7 +8430,7 @@ namespace TicketingSystem.Infrastructure.Migrations
                             Capacity = 50,
                             EventId = new Guid("11111111-1111-1111-1111-444444444444"),
                             Name = "General",
-                            Price = 60000m
+                            Price = 5000m
                         },
                         new
                         {
@@ -8435,7 +8438,7 @@ namespace TicketingSystem.Infrastructure.Migrations
                             Capacity = 50,
                             EventId = new Guid("11111111-1111-1111-1111-444444444444"),
                             Name = "VIP",
-                            Price = 90000m
+                            Price = 15000m
                         },
                         new
                         {
@@ -8443,7 +8446,7 @@ namespace TicketingSystem.Infrastructure.Migrations
                             Capacity = 50,
                             EventId = new Guid("11111111-1111-1111-1111-555555555555"),
                             Name = "General",
-                            Price = 60000m
+                            Price = 5000m
                         },
                         new
                         {
@@ -8451,7 +8454,7 @@ namespace TicketingSystem.Infrastructure.Migrations
                             Capacity = 50,
                             EventId = new Guid("11111111-1111-1111-1111-555555555555"),
                             Name = "VIP",
-                            Price = 90000m
+                            Price = 15000m
                         },
                         new
                         {
@@ -8459,7 +8462,7 @@ namespace TicketingSystem.Infrastructure.Migrations
                             Capacity = 50,
                             EventId = new Guid("11111111-1111-1111-1111-666666666666"),
                             Name = "General",
-                            Price = 60000m
+                            Price = 5000m
                         },
                         new
                         {
@@ -8467,7 +8470,7 @@ namespace TicketingSystem.Infrastructure.Migrations
                             Capacity = 50,
                             EventId = new Guid("11111111-1111-1111-1111-666666666666"),
                             Name = "VIP",
-                            Price = 90000m
+                            Price = 15000m
                         },
                         new
                         {
@@ -8475,7 +8478,7 @@ namespace TicketingSystem.Infrastructure.Migrations
                             Capacity = 50,
                             EventId = new Guid("11111111-1111-1111-1111-777777777777"),
                             Name = "General",
-                            Price = 60000m
+                            Price = 5000m
                         },
                         new
                         {
@@ -8483,7 +8486,7 @@ namespace TicketingSystem.Infrastructure.Migrations
                             Capacity = 50,
                             EventId = new Guid("11111111-1111-1111-1111-777777777777"),
                             Name = "VIP",
-                            Price = 90000m
+                            Price = 15000m
                         },
                         new
                         {
@@ -8491,7 +8494,7 @@ namespace TicketingSystem.Infrastructure.Migrations
                             Capacity = 50,
                             EventId = new Guid("11111111-1111-1111-1111-888888888888"),
                             Name = "General",
-                            Price = 60000m
+                            Price = 5000m
                         },
                         new
                         {
@@ -8499,7 +8502,7 @@ namespace TicketingSystem.Infrastructure.Migrations
                             Capacity = 50,
                             EventId = new Guid("11111111-1111-1111-1111-888888888888"),
                             Name = "VIP",
-                            Price = 90000m
+                            Price = 15000m
                         },
                         new
                         {
@@ -8507,7 +8510,7 @@ namespace TicketingSystem.Infrastructure.Migrations
                             Capacity = 50,
                             EventId = new Guid("11111111-1111-1111-1111-999999999999"),
                             Name = "General",
-                            Price = 60000m
+                            Price = 5000m
                         },
                         new
                         {
@@ -8515,7 +8518,7 @@ namespace TicketingSystem.Infrastructure.Migrations
                             Capacity = 50,
                             EventId = new Guid("11111111-1111-1111-1111-999999999999"),
                             Name = "VIP",
-                            Price = 90000m
+                            Price = 15000m
                         });
                 });
 

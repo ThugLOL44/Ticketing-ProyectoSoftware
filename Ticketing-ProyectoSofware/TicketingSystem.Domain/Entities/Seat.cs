@@ -12,5 +12,4 @@ public class Seat
     public int Version { get; set; }
 
     public Sector Sector { get; set; } = null!;
-    public Reservation? ActiveReservation { get; set; }
 }

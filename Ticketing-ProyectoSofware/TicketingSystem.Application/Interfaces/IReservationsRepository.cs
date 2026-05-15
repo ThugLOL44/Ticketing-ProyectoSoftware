@@ -6,4 +6,5 @@ public interface IReservationsRepository
 
 {
     Task<Reservation> CreateAsync(Reservation reservation);
+    Task<Reservation?> GetByIdWithSeatAsync(Guid reservationId);
 }
