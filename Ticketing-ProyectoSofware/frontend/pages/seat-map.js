@@ -3,6 +3,45 @@ const EVENT_ID = getEventIdFromUrl();
 let activeReservations = [];
 let countdownInterval = null;
 
+function saveCartToSession() {
+    sessionStorage.setItem('activeReservations', JSON.stringify(activeReservations));
+    sessionStorage.setItem('cartEventId', EVENT_ID);
+}
+
+function clearCart() {
+    activeReservations = [];
+    clearInterval(countdownInterval);
+    countdownInterval = null;
+    sessionStorage.removeItem('activeReservations');
+    sessionStorage.removeItem('cartExpiresAt');
+    sessionStorage.removeItem('cartEventId');
+    sessionStorage.removeItem('isReloading');
+    document.getElementById('cartPanel').classList.add('hidden');
+}
+
+function restoreCartFromSession() {
+    sessionStorage.removeItem('isReloading');
+    const savedReservations = sessionStorage.getItem('activeReservations');
+    const savedExpiresAt    = sessionStorage.getItem('cartExpiresAt');
+    const savedEventId      = sessionStorage.getItem('cartEventId');
+
+    if (!savedReservations || !savedExpiresAt) return;
+
+    if (savedEventId !== EVENT_ID) return;
+
+    const segundosRestantes = Math.floor((new Date(savedExpiresAt) - new Date()) / 1000);
+    if (segundosRestantes <= 0) {
+        sessionStorage.removeItem('activeReservations');
+        sessionStorage.removeItem('cartExpiresAt');
+        sessionStorage.removeItem('cartEventId');
+        return;
+    }
+
+    activeReservations = JSON.parse(savedReservations);
+    renderCart();
+    startCountdown(segundosRestantes);
+}
+
 function getEventIdFromUrl() {
     const params = new URLSearchParams(window.location.search);
     return params.get('eventId') ?? '11111111-1111-1111-1111-111111111111';
@@ -37,6 +76,7 @@ const response = await fetch(`${API_BASE_URL}/api/v1/reservations`, {
             seatLabel: `${seat.rowIdentifier}${seat.seatNumber}`,
             price: seat.sectorPrice
         });
+        saveCartToSession();
         renderCart();
         startCountdown();
         markSeatAsReserved(button);
@@ -160,8 +200,7 @@ async function onTimerExpired() {
     document.getElementById('paymentModal').classList.add('hidden');
     showToast('Tu reserva expiró — la butaca fue liberada automáticamente.', 'warning');
     const ids = activeReservations.map(reserva => reserva.reservationId)
-    activeReservations = [];
-    countdownInterval = null;
+    clearCart();
     await cancelReservations(ids);
     loadSeatMap();
 }
@@ -188,20 +227,26 @@ function renderCart() {
  document.getElementById('cartPanel').classList.remove('hidden');
 }
 
-function startCountdown() {
+function startCountdown(segundosIniciales = 5 * 60) {
     if (countdownInterval !== null) return;
 
-    let segundos = 5 * 60;
+    let segundos = segundosIniciales;
+
+    sessionStorage.setItem('cartExpiresAt',
+        new Date(Date.now() + segundos * 1000).toISOString());
 
     countdownInterval = setInterval(() => {
         segundos--;
-
         const minutos = Math.floor(segundos / 60);
         const segsRestantes = segundos % 60;
         const tiempo = `${String(minutos).padStart(2, '0')}:${String(segsRestantes).padStart(2, '0')}`;
-
         document.getElementById('countdownTimer').textContent = tiempo;
         document.getElementById('paymentTimer').textContent = tiempo;
+
+        if (segundos % 5 === 0) {
+            sessionStorage.setItem('cartExpiresAt',
+                new Date(Date.now() + segundos * 1000).toISOString());
+        }
 
         if (segundos <= 0) {
             clearInterval(countdownInterval);
@@ -233,11 +278,8 @@ async function confirmPayment() {
 
         document.getElementById('successModal').classList.remove('hidden');
 
-        clearInterval(countdownInterval);
-        countdownInterval = null;
-        activeReservations = [];
-        document.getElementById('cartPanel').classList.add('hidden');
-        loadSeatMap();
+        clearCart();
+
 
     } catch {
         showToast('Error al procesar el pago. Intentá nuevamente.', 'error');
@@ -246,19 +288,23 @@ async function confirmPayment() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', loadSeatMap);
-
-document.addEventListener('visibilitychange', async () => {
-    if (document.visibilityState === 'hidden' && activeReservations.length > 0) {
-        const ids = activeReservations.map(r => r.reservationId);
-        activeReservations = [];
-        countdownInterval = null;
-        await cancelReservations(ids);
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    loadSeatMap();
+    restoreCartFromSession();
 });
 
 window.addEventListener('beforeunload', () => {
+    sessionStorage.setItem('isReloading', 'true');
+});
+
+window.addEventListener('pagehide', () => {
     if (activeReservations.length === 0) return;
+
+    if (sessionStorage.getItem('isReloading') === 'true') {
+        sessionStorage.removeItem('isReloading');
+        return;
+    }
+
     const ids = activeReservations.map(r => r.reservationId);
     fetch(`${API_BASE_URL}/api/v1/reservations/cancel`, {
         method: 'POST',
@@ -267,6 +313,7 @@ window.addEventListener('beforeunload', () => {
         keepalive: true
     });
 });
+
 function openPaymentModal() {
     let total = 0;
     const summaryItems = document.getElementById('summaryItems');
@@ -324,6 +371,8 @@ function closeSuccessModal() {
     msg.textContent = 'Redirigiendo al catálogo...';
     document.body.appendChild(msg);
 
+    sessionStorage.removeItem('isReloading'); 
+    
     setTimeout(() => {
         window.location.href = 'index.html';
     }, 1500);
